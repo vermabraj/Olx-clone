@@ -29,34 +29,22 @@ export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   
-  const NavLink = ({ children }: { children: ReactNode }) => (
-    <Link
-      px={2}
-      py={1}
-      rounded={'md'}
-      _hover={{
-        textDecoration: 'none',
-        bg: useColorModeValue('gray.200', 'gray.700'),
-      }}
-      href={'#'}>
-      {children}
-    </Link>
-  );
+ 
   
   return (
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} box-shadow= "rgba(0, 0, 0, 0.35) 0px 5px 15px">
+    <Box  bg={useColorModeValue('gray.100', 'gray.900')} px={1} box-shadow= "rgba(0, 0, 0, 0.35) 0px 5px 15px">
       <Flex
-        bg={useColorModeValue('#eff1f3', 'gray.800')}
+        bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
-        px={{ base: 4 }}
+        px={{ base: 2 }}
         borderBottom={1}
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}>
        
-        <Flex flex={{ base: 1 }} justify={{ base: 'left', md: 'start' }}>
+        <Flex  flex={{ base: 1 ,md:1,lg:1}} justify={{ base: 'left', md: 'start' }}>
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
@@ -69,7 +57,7 @@ export default function Navbar() {
 <SearchBar/>
 </Flex>
         <Stack
-          flex={{sm:1,  md: 1,lg:1 }}
+          flex={{sm:1,  md: 1 }}
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
@@ -80,7 +68,7 @@ export default function Navbar() {
          
         </Select>
         </Flex>
-        <Button onClick={toggleColorMode}>
+        <Button bg="none" onClick={toggleColorMode}>
         {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
       </Button>
           <Button

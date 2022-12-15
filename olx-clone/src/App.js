@@ -1,14 +1,17 @@
 
 import './App.css';
 import Navbar  from "./Components/Navbar/Navbar"
-import Corosoul from './Components/Corousol';
-import NewComponent from "./Components/SearchBar/SmallSearchBar"
+import SimpleSlider  from './Components/Corosoul';
+import PauseOnHover from "./Components/Cards/SlidingCards"
+import ProductCards from "./Components/Cards/ProductCards"
 function App() {
   return (
     <div className="App">
       
    <Navbar/>
-   <NewComponent/>
+   <SimpleSlider />
+  <PauseOnHover/>
+  <ProductCards/>
     </div>
   );
 }

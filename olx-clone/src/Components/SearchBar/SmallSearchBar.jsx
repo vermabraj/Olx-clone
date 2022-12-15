@@ -1,11 +1,11 @@
-import "./SmallSearchBar.css"
-import React from "react"
- function NewComponent() {
-      return (
+// import "./SmallSearchBar.css"
+// import React from "react"
+//  function NewComponent() {
+//       return (
         
-        <input><div class="div1"></div></input>
-      );
-    }
+//         <input><div class="div1"></div></input>
+//       );
+//     }
  
 
-  export default NewComponent;
+//   export default NewComponent;
