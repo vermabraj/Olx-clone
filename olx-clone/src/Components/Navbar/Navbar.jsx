@@ -1,31 +1,23 @@
-import { ReactNode } from 'react';
+
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
   Text,
-  IconButton,
   Button,
   Stack,
-  Collapse,
-  Icon,
-  Link,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
   Avatar, 
   useColorMode,
-  HStack,Select
+  HStack,Select,Hide,Show
 } from '@chakra-ui/react';
 import {AddIcon} from '@chakra-ui/icons';
 import SearchBar from "../SearchBar/SearchBar"
-import LocationSearchInput from "../SearchBar/SearchLocation"
-import Banner from './Banner/Banner';
+// import Banner from './Banner/Banner';
 export default function Navbar() {
-  const { isOpen, onToggle } = useDisclosure();
+   const { isOpen, onToggle } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
   
@@ -36,7 +28,7 @@ export default function Navbar() {
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
-        minH={'60px'}
+        minH={'80px'}
         py={{ base: 2 }}
         px={{ base: 2 }}
         borderBottom={1}
@@ -80,18 +72,21 @@ export default function Navbar() {
             Login
           </Button>
           <HStack>
-          <Button   padding="10px"
+         <Hide below="md"> <Button   padding="10px"
           border="5px solid" 
         borderRadius="2rem"
           border-style= "solid"
-         borderColor= " blue #00BFFF #00BFFF yellow"
+          box-shadow= "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
+         borderColor= " blue yellow #00BFFF yellow"
+         fontWeight={"bolder"}
            leftIcon={<AddIcon />}>
             SELL
-          </Button>
+          </Button></Hide>
         </HStack>
         </Stack>
+    
       </Flex>
-      <Banner/>
+      
     </Box>
   );
 }
