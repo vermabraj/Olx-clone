@@ -1,26 +1,64 @@
-import { Card, CardHeader, CardBody, CardFooter,Flex,Avatar,Box,Heading,Text,Image } from '@chakra-ui/react'
+import { Card, CardHeader, Box, CardFooter,Flex,SimpleGrid,Heading,Text,Image, textDecoration } from '@chakra-ui/react'
+import { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom"
+// import axios from "axios";
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { getCities } from "../../Api/Api";
 
 
 
 export default function ProductCards() {
-  
-  return (
-    <Card maxW='15rem'>
+ const navigate = useNavigate()
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const handleGetCities = (page) => {
+    getCities({ page: page, limit: 40, sort: "name", order: "desc" })
+      .then((res) => {
+        setData(res.data);
+        setTotalCount(Number(res.headers["x-total-count"]));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    handleGetCities(page);
+  }, [page]);
+
+  const handlePageChange = (val) => {
+    const updatedPage = page + val;
+    setPage(updatedPage);
+  };
  
-  <CardBody>
-   
-  </CardBody>
+  const handleClick=()=>{
+    localStorage.setItem("tasks", JSON.stringify(data));
+    data=localStorage.getItem('tasks')
+console.log(data)
+    navigate("/SingleUserPage")
+  }
+  return (
+    <div style={{width:"90%",margin:"auto"}}>
+    <h1 style={{fontSize:"25px",fontWeight:"bolder", textDecoration:"underline"}}>Fresh Recommendations</h1>
+    <SimpleGrid    columns={{base:1,md:2,lg:3,"xl":4}} w="100%" spacing={4}>
+    {data.map((item) => (
+      
+    <Card onClick={handleClick} w={{base:"23rem",md:"20rem",lg:"18rem"}}   border="1px solid silver"  minH='21rem' margin={"auto"}>
+ 
+  <Box sx={{ position:"absolute", marginLeft : "90%",color:"grey",marginTop:"5px",marginRight:"10px"}}><FavoriteBorderOutlinedIcon  /></Box>
   <Image
+  height={170}
     
-    src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-    alt='Image'
+    margin={"auto"}
+    src={item.image}
+    alt={item.title}
   />
   <CardHeader>
-  <Flex spacing='0'>
-    <Flex flex='1' gap='0' alignItems='center' flexWrap='wrap'>
+  <Flex >
+    <Flex   alignItems='center' flexWrap='wrap'>
       <Box>
-        <Heading size='sm'>3300</Heading>
-        <Text size="sm">Iphone 14 pro</Text>
+        <Heading size='md'>{item.price}</Heading>
+        <Text size="sm">{item.title}</Text>
       </Box>
     </Flex>
    
@@ -30,12 +68,15 @@ export default function ProductCards() {
     justify='space-between'
     flexWrap='wrap'
     sx={{
-      fontSize:"10px"
+      fontSize:"12px"
     }}
   >
-  <Text>Sehore MP</Text>
-  <Text>15-12-2022</Text>
+  <Text>{item.location}</Text>
+  <Text>{item.post_uploaded}</Text>
   </CardFooter>
 </Card>
+))}
+</SimpleGrid>
+</div>
   );
 }
