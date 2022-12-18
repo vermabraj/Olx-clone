@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Card, CardHeader, Box, CardFooter,Flex,Heading,Text,Image } from '@chakra-ui/react'
+import { Card, CardHeader, Box, CardFooter,Flex,Heading,Text,Image,Hide } from '@chakra-ui/react'
 import { useState, useEffect } from "react";
 // import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -71,7 +71,8 @@ export default function PauseOnHover(){
   }
 
     return (
-      <div style={{margin:"auto",marginBottom:"40px",marginTop:"-40px"}} >
+      <Hide below="md">
+      <div style={{margin:"auto",marginBottom:"40px",marginTop:"-60px"}} >
         <h2 style={{fontSize:"25px",fontWeight:"bolder",marginLeft:"30px",marginBottom:"10px",textDecoration:"underline"}} >More on Cars</h2>
         <Slider  style={{width:"95%",margin:"auto"  }}  {...settings}>
         {data.map((item) => (
@@ -111,5 +112,6 @@ export default function PauseOnHover(){
       ))}
         </Slider>
       </div>
+      </Hide>
     );
   }

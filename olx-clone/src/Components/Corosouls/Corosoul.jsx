@@ -18,8 +18,8 @@ export default class SimpleSlider extends Component {
 
     const cards = [
       'https://statics.olx.in/olxin/banners/hero_bg_in_v3@1x.png',
-      'https://images.unsplash.com/photo-1627875764093-315831ac12f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-      'https://images.unsplash.com/photo-1571432248690-7fd6980a1ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+      'https://marutisuzukitruevaluecdn2.azureedge.net/-/media/feature/truevalue/carouselgallery/homebanner/home-26-08.jpg?modified=20210826074338&h=588&w=1920&la=en&hash=B8CB78CEC4E6A0D9071A95BBBAF55676',
+      'https://olx-sijeesh.web.app/Images/banner%20copy.png',
     ];
 
     return (
@@ -27,7 +27,7 @@ export default class SimpleSlider extends Component {
       height={'18rem'}
       width={'full'}
       overflow={'hidden'}
-      marginTop={"2em"}>
+      >
       
         <Slider   {...settings}>
         {cards.map((url, index) => (
@@ -35,7 +35,6 @@ export default class SimpleSlider extends Component {
           maxW="100%"
             key={index}
             height={'10rem'}
-            
             position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
