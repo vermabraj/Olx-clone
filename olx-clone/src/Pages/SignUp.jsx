@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { useUserAuth } from "../Context/UserAuthContext";
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="p-4 box">
         <h2 className="mb-3">Firebase Auth Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
@@ -54,7 +54,7 @@ const Signup = () => {
       <div className="p-4 box mt-3 text-center">
         Already have an account? <Link to="/">Log In</Link>
       </div>
-    </div>
+    </>
   );
 };
 

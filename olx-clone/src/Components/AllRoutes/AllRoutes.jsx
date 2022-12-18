@@ -1,28 +1,37 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../../Pages/Home";
-
 import Login from "../../Pages/Login";
-import SingleUserPage from "../../Pages/SingleUserPage";
-import SignUp from "../../Pages/SignUp"
-// import PrivateRoute from "../Components/PrivateRoute";
-import { Container,Row,Col } from "react-bootstrap";
-import {UserAuthContextProvider} from "../../Context/UserAuthContext"
+
+import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
+
 function AllRouters() {
   return (
-    <Container>
-    <Row>
-    <Col>
-    <UserAuthContextProvider>
     <Routes>
-      <Route  path="/"  element={ <Home />} />
-      <Route  path="/SingleUserPage" element={<SingleUserPage />}/>
-      <Route path="/Login" element={<Login />} />
-      <Route path="/SignUp" element={<SignUp />} />
+      <Route
+        path="/"
+        element={
+          
+            <Home />
+         
+        }
+      />
+      <Route
+      path="/Login"
+      element={
+        
+          <Login />
+       
+      }
+    />
+      <Route
+        path="/ProductDetails"
+        element={
+           <ProductDetails />
+         
+        }
+      />
+    
     </Routes>
-    </UserAuthContextProvider>
-    </Col>
-    </Row>
-    </Container>
   );
 }
 

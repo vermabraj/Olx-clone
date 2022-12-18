@@ -1,7 +1,7 @@
 .footer {
     position: relative;
     margin: 0px;
-    background-color: #f5f5f5;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 5px;
     height: max-content;
     margin-top: 50px;
@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-evenly;
     font-size: small;
-    color:black
+   
   }
   
   .sub p {
@@ -31,13 +31,14 @@
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: larger;
-    color:black
+    color:black;
     
   }
   .footerSocialLinks div{
     flex-wrap: wrap;
   margin: 15px;
   font-size:large;
+  font-size: 20px;
    
   }
   .footersFooter{

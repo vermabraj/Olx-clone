@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import { Card, CardHeader, Box, CardFooter,Flex,Heading,Text,Image } from '@chakra-ui/react'
 import { useState, useEffect } from "react";
 // import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 import {getBikes} from "../../Api/SlidingCardsApi"
@@ -31,6 +32,9 @@ function SamplePrevArrow(props) {
 export default function PauseOnHover(){
   
     const settings = {
+      accessibility:true,
+      adaptiveHeight:false,
+     touchMove:true,
       dots: true,
       infinite: true,
       slidesToShow: 4,
@@ -43,7 +47,7 @@ export default function PauseOnHover(){
       prevArrow: <SamplePrevArrow />
     };
 
-    
+    const navigate = useNavigate()
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
@@ -61,7 +65,10 @@ export default function PauseOnHover(){
     handleGetCities(page);
   }, [page]);
 
- 
+  const handleClick=()=>{
+   
+    navigate("/SingleUserPage")
+  }
 
     return (
       <div style={{margin:"auto",marginBottom:"40px",marginTop:"-40px"}} >
@@ -69,7 +76,7 @@ export default function PauseOnHover(){
         <Slider  style={{width:"95%",margin:"auto"  }}  {...settings}>
         {data.map((item) => (
       
-          <Card margin="auto" box-shadow= {"rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px"} minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}}>
+          <Card onClick={handleClick} margin="auto" box-shadow= {"rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px"} minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}}>
        
         <Box sx={{position:"absolute", marginLeft : "90%",color:"white",marginTop:"5px",marginRight:"10px"}}><FavoriteBorderOutlinedIcon  /></Box>
         <Image

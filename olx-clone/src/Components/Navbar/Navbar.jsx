@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import {AddIcon} from '@chakra-ui/icons';
 import SearchBar from "../SearchBar/SearchBar"
+
 // import Banner from './Banner/Banner';
 export default function Navbar() {
    const { isOpen, onToggle } = useDisclosure();

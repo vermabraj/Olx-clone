@@ -14,7 +14,7 @@ export default function ProductCards() {
   const [totalCount, setTotalCount] = useState(0);
 
   const handleGetCities = (page) => {
-    getCities({ page: page, limit: 40, sort: "name", order: "desc" })
+    getCities({ page: page, limit: 12, sort: "name", order: "desc" })
       .then((res) => {
         setData(res.data);
         setTotalCount(Number(res.headers["x-total-count"]));
@@ -32,14 +32,12 @@ export default function ProductCards() {
   };
  
   const handleClick=()=>{
-    localStorage.setItem("tasks", JSON.stringify(data));
-    data=localStorage.getItem('tasks')
-console.log(data)
-    navigate("/SingleUserPage")
+   
+    navigate("/ProductDetails")
   }
   return (
     <div style={{width:"90%",margin:"auto"}}>
-    <h1 style={{fontSize:"25px",fontWeight:"bolder", textDecoration:"underline"}}>Fresh Recommendations</h1>
+    <h1 style={{fontSize:"25px",fontWeight:"bolder", textDecoration:"underline",marginBottom:"10px"}}>Fresh Recommendations</h1>
     <SimpleGrid    columns={{base:1,md:2,lg:3,"xl":4}} w="100%" spacing={4}>
     {data.map((item) => (
       
