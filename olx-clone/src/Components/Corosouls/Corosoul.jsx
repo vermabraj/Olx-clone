@@ -5,7 +5,9 @@ import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 export default class SimpleSlider extends Component {
   render() {
     const settings = {
-      
+     accessibility:true,
+     adaptiveHeight:false,
+    touchMove:true,
       autoplay: true,
       autoplaySpeed: 2000,
       infinite: true,
@@ -24,7 +26,8 @@ export default class SimpleSlider extends Component {
       <Box  position={'relative'}
       height={'18rem'}
       width={'full'}
-      overflow={'hidden'}>
+      overflow={'hidden'}
+      marginTop={"2em"}>
       
         <Slider   {...settings}>
         {cards.map((url, index) => (
