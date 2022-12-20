@@ -36,6 +36,7 @@ export default function Navbar() {
         px={{ base: 2 }}
         borderBottom={1}
         borderStyle={'solid'}
+        flexWrap={"wrap-reverse"}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}>
        <Link to="/">

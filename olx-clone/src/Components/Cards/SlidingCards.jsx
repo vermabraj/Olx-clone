@@ -72,7 +72,7 @@ export default function PauseOnHover(){
   }
 
     return (
-      <Hide below="md">
+      <Hide below="lg">
       <div style={{margin:"auto",marginBottom:"40px",marginTop:"-60px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",borderRadius:"20px"}} >
         <h2 style={{fontSize:"25px",fontWeight:"bolder",marginLeft:"30px",marginBottom:"10px",textDecoration:"underline"}} >More on Cars</h2>
         <Slider  style={{width:"95%",margin:"auto"  }}  {...settings}>
