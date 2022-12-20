@@ -7,21 +7,22 @@ import {
 } from '@chakra-ui/react';
 import React from 
 'react'
-import { Search2Icon } from '@chakra-ui/icons'
- function SearchBar() {
+
+ function SearchBar({Search2Icon,width,SearchPlaceholder}) {
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
 
   return (
     <InputGroup size='md' display={{ base: 'none', md: 'flex',lg:"flex" }}>
       <Input 
+    marginLeft="20px"
         pr='4.5rem'
         type="text"
-        placeholder='Search here' width="500px"
+        placeholder={SearchPlaceholder} width={width}
       />
       <InputRightElement width='3rem'>
-        <Button bg="black" h='2.5rem' size='md' onClick={handleClick}>
-          {<Search2Icon color="white"/>}
+        <Button  h='2rem' size='sm' onClick={handleClick}>
+          {Search2Icon}
         </Button>
       </InputRightElement>
       

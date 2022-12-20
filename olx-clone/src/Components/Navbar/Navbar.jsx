@@ -13,12 +13,14 @@ import {
   useColorMode,
   HStack,Select,Hide,Show
 } from '@chakra-ui/react';
-import {AddIcon} from '@chakra-ui/icons';
-import SearchBar from "../SearchBar/SearchBar"
 
+import { Link } from 'react-router-dom';
+import {AddIcon,Search2Icon} from '@chakra-ui/icons';
+import SearchBar from "../SearchBar/SearchBar"
+import Signin from "../Authentication/Sign-in.component"
 // import Banner from './Banner/Banner';
 export default function Navbar() {
-   const { isOpen, onToggle } = useDisclosure();
+   const { isOpen, onToggle,onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
   
@@ -34,9 +36,10 @@ export default function Navbar() {
         px={{ base: 2 }}
         borderBottom={1}
         borderStyle={'solid'}
+        flexWrap={"wrap-reverse"}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}>
-       
+       <Link to="/">
         <Flex  flex={{ base: 1 ,md:1,lg:1}} justify={{ base: 'left', md: 'start' }}>
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
@@ -46,8 +49,10 @@ export default function Navbar() {
             <Avatar height="3.5rem" size='xl' name='Logo' src='https://images-platform.99static.com/Wz8uWM8Bxjb8cKkxi11G_6wcqpg=/1x1:960x960/500x500/top/smart/99designs-contests-attachments/78/78275/attachment_78275463' />
           </Text>
         </Flex>
+        </Link>
 <Flex>
-<SearchBar/>
+<SearchBar width={"15rem"} SearchPlaceholder={"Location"} Search2Icon={  <Avatar size='sm' name='Kent Dodds' src='https://www.freeiconspng.com/thumbs/location-icon-png/location-icon-24.png' />}/>
+<SearchBar width={"28rem"} SearchPlaceholder={"Search here"} Search2Icon={<Search2Icon/>}/>
 </Flex>
         <Stack
           flex={{sm:1,  md: 1 }}
@@ -64,16 +69,14 @@ export default function Navbar() {
         <Button bg="none" onClick={toggleColorMode}>
         {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
       </Button>
-          <Button
-            as={'a'}
-            fontSize={'md'}
-            fontWeight={500}
-            variant={'link'}
-            href={'#'}>
-            Login
-          </Button>
+      
+          <small
+            >
+           {<Signin ModalName={"Login"} />}
+          </small>
           <HStack>
-         <Hide below="md"> <Button   padding="10px"
+         <Hide below="md"> <Button  
+          padding="10px"
           border="5px solid" 
         borderRadius="2rem"
           border-style= "solid"
@@ -81,7 +84,7 @@ export default function Navbar() {
          borderColor= " blue yellow #00BFFF yellow"
          fontWeight={"bolder"}
            leftIcon={<AddIcon />}>
-            SELL
+           {<Signin ModalName={"Sale"}/>}
           </Button></Hide>
         </HStack>
         </Stack>

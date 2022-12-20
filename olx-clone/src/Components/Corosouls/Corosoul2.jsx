@@ -17,14 +17,14 @@ export default class SimpleSlider2 extends Component {
     };
 
     const cards = [
-      'https://www.doditsolutions.com/wp-content/uploads/banner_14.jpg',
-      'https://images.unsplash.com/photo-1627875764093-315831ac12f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-      'https://images.unsplash.com/photo-1571432248690-7fd6980a1ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+      'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/rent-a-car-banner-template-design-29dd9f007cc19e7aa2fe84fdd1861aa5_screen.jpg?ts=1634324544',
+      'https://static.wixstatic.com/media/5e56e2_85bef30065d54911a5220d16af385c39~mv2.jpg/v1/fill/w_586,h_322,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/5e56e2_85bef30065d54911a5220d16af385c39~mv2.jpg',
+      'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/rent-a-car-banner-template-design-da13cbd4c73f6d7efa21f80290de446f_screen.jpg?ts=1633243866',
     ];
 
     return (
       <Box  position={'relative'}
-      height={'18rem'}
+      height={'full'}
       width={'full'}
       overflow={'hidden'}
       marginTop={"2em"}
@@ -40,7 +40,7 @@ export default class SimpleSlider2 extends Component {
             position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
-            backgroundSize="cover"
+            
             backgroundImage={`url(${url})`}
           />
         ))}

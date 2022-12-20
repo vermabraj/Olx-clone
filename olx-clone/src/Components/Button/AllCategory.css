@@ -1,44 +1,10 @@
-#after-top{
-    padding: 40px;
-    display: flex;
-    gap : 100px;
-    justify-content: space-evenly;
-    align-items: center;
-}
 
-.logo{
-    min-width: 150px;
-    height: 40px;
-}
-
-#search-bar{
-    width: 500px;
-}
-
-
-
-.cartValue{
-    border: 1px solid black;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
-    position: absolute;
-    text-align: center;
-    right: -18px; top: -13px; 
-    font-size: 12px;
-    
-}
-#cart-icon{
-    position: relative;
-}
 
 .dropdown {
     position: relative;
     display: inline-block;
     cursor: pointer;
-    
+   
   }
   
   .dropdown-content {
@@ -57,7 +23,7 @@
   
   .dropdown-content p {
     font-size: 14px;
-    color:  black;
+    
 
     text-decoration: none;
     margin: 10px;
@@ -78,7 +44,7 @@
     display: none;
     /* border: 1px solid black; */
     border-radius: 10px;
-    background-color: #f1f1f1;
+   
     height: auto;
     min-width: 320px;
     right: 10;
@@ -96,6 +62,7 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
+   margin-top: -1rem;
   }
   .menu-dropdown-content{
     position: absolute;
@@ -109,7 +76,9 @@
     width: 1000px;
     z-index: 2;
     cursor: pointer;
-   
+   font-family:sans-serif;
+   font-size: 15px;
+   line-height: 20px;
   }
 
  #menu-title{
@@ -117,8 +86,7 @@
    cursor: pointer;
   }
   #menu-title:hover{
-    background-color: black;
-    color: white;
+  
     cursor: pointer;
 
   }

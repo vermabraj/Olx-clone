@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Card, CardHeader, Box, CardFooter,Flex,Heading,Text,Image } from '@chakra-ui/react'
+import { Card, CardHeader, Box, CardFooter,Flex,Heading,Text,Image,Hide } from '@chakra-ui/react'
 import { useState, useEffect } from "react";
 // import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +22,7 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
+
       className={className}
       style={{ ...style, display: "block", background: "green" }}
       onClick={onClick}
@@ -71,12 +72,13 @@ export default function PauseOnHover(){
   }
 
     return (
-      <div style={{margin:"auto",marginBottom:"40px",marginTop:"-40px"}} >
+      <Hide below="lg">
+      <div style={{margin:"auto",marginBottom:"40px",marginTop:"-60px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",borderRadius:"20px"}} >
         <h2 style={{fontSize:"25px",fontWeight:"bolder",marginLeft:"30px",marginBottom:"10px",textDecoration:"underline"}} >More on Cars</h2>
         <Slider  style={{width:"95%",margin:"auto"  }}  {...settings}>
         {data.map((item) => (
       
-          <Card onClick={handleClick} margin="auto" box-shadow= {"rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px"} minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}}>
+          <Card onClick={handleClick} margin="auto" boxShadow= {"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}}>
        
         <Box sx={{position:"absolute", marginLeft : "90%",color:"white",marginTop:"5px",marginRight:"10px"}}><FavoriteBorderOutlinedIcon  /></Box>
         <Image
@@ -111,5 +113,6 @@ export default function PauseOnHover(){
       ))}
         </Slider>
       </div>
+      </Hide>
     );
   }
