@@ -4,9 +4,11 @@ import {
   AiFillTwitterCircle,
   AiFillInstagram
 } from "react-icons/ai";
+import {Link} from "react-router-dom"
 import {  ImYoutube2 } from "react-icons/im";
 import { Image, Stack } from '@chakra-ui/react'
 import "./FooterStyle.css";
+
 
  const Footer = () => {
   return (
@@ -51,7 +53,7 @@ import "./FooterStyle.css";
               <div ><AiFillFacebook /></div>
               <div >  <AiFillTwitterCircle /></div>  
               <div  > <AiFillInstagram /></div>
-              <div > <ImYoutube2/></div>
+              <div ><Link src="https://www.youtube.com/@Brajverma/featured"> <ImYoutube2 /> </Link></div>
            
               </div>
               <div className="storeLogo">

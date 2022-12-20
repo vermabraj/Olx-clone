@@ -13,10 +13,11 @@ import {
   useColorMode,
   HStack,Select,Hide,Show
 } from '@chakra-ui/react';
+
 import { Link } from 'react-router-dom';
-import {AddIcon} from '@chakra-ui/icons';
+import {AddIcon,Search2Icon} from '@chakra-ui/icons';
 import SearchBar from "../SearchBar/SearchBar"
-import Signin from "../AllRoutes/Sign-in/Sign-in.component"
+import Signin from "../Authentication/Sign-in.component"
 // import Banner from './Banner/Banner';
 export default function Navbar() {
    const { isOpen, onToggle,onOpen } = useDisclosure();
@@ -37,7 +38,7 @@ export default function Navbar() {
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}>
-       <Link to="/Signin">
+       <Link to="/">
         <Flex  flex={{ base: 1 ,md:1,lg:1}} justify={{ base: 'left', md: 'start' }}>
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
@@ -49,7 +50,8 @@ export default function Navbar() {
         </Flex>
         </Link>
 <Flex>
-<SearchBar/>
+<SearchBar width={"15rem"} SearchPlaceholder={"Location"} Search2Icon={  <Avatar size='sm' name='Kent Dodds' src='https://www.freeiconspng.com/thumbs/location-icon-png/location-icon-24.png' />}/>
+<SearchBar width={"28rem"} SearchPlaceholder={"Search here"} Search2Icon={<Search2Icon/>}/>
 </Flex>
         <Stack
           flex={{sm:1,  md: 1 }}
@@ -72,7 +74,7 @@ export default function Navbar() {
            {<Signin ModalName={"Login"} />}
           </small>
           <HStack>
-         <Hide below="md"><Link to="/Sign-in"> <Button  
+         <Hide below="md"> <Button  
           padding="10px"
           border="5px solid" 
         borderRadius="2rem"
@@ -82,7 +84,7 @@ export default function Navbar() {
          fontWeight={"bolder"}
            leftIcon={<AddIcon />}>
            {<Signin ModalName={"Sale"}/>}
-          </Button></Link></Hide>
+          </Button></Hide>
         </HStack>
         </Stack>
     
