@@ -19,6 +19,7 @@ import {
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import { useToast } from '@chakra-ui/react'
   
   const defaultFormFields = {
     email:"",
@@ -27,14 +28,24 @@ import { useNavigate } from "react-router-dom";
 
 const Authentication = ({ModalName})=>{
     const { isOpen, onOpen, onClose } = useDisclosure()
-
+    const toast = useToast()
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
+    
 const logGoogleUser = async() =>{
 const {user} = await signInWithGooglePopup();
  await createUserDocumentFromAuth(user)
 setProfile(user?.displayName)
- toast("Login Successfully")
+navigate("/")
+ 
+toast({
+  title: 'Account created.',
+  description: "We've created your account for you.",
+  status: 'success',
+  duration: 9000,
+  isClosable: true,
+})
+ 
  
 }
 
@@ -42,10 +53,11 @@ const [formField,setFormField] = useState(defaultFormFields)
 const {email,password} = formField;
 const [profile,setProfile] = useState("")
 const navigate = useNavigate()
+
 const restFormFields = ()=>{
 setFormField(defaultFormFields)
-navigate("/")
-toast("Login Successfully")
+
+
 }
 
 const handleChange=(event)=>{
@@ -65,11 +77,11 @@ toast("there is some error in login")
 }
 
 
-
+console.log(profile)
     return (
        
         
-        <div>{profile}{}
+        <div>
         <Button bg={"none"} onClick={onOpen}>{ModalName}</Button>
       <Modal
         initialFocusRef={initialRef}

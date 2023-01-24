@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getBikes = (params = {}) => {
-  return axios.get(`https://legendary-bittersweet-ski.glitch.me/api/Cars`, {
+  return axios.get(`https://congruous-fork-name.glitch.me//api/Cars`, {
     params: {
       _page: params.page,
       _limit: params.limit,

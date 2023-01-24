@@ -6,8 +6,8 @@ import PauseOnHover from "../Components/Cards/SlidingCards"
 import ProductCards from "../Components/Cards/ProductCards"
 
 import Banner from "../Components/Navbar/Banner/Banner"
-export default function Home(){
-
+export default function Home({query}){
+console.log(query)
 return(
 <div>
 

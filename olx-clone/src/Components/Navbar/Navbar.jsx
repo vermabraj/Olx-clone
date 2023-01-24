@@ -11,19 +11,24 @@ import {
   useDisclosure,
   Avatar, 
   useColorMode,
-  HStack,Select,Hide,Show
+  HStack,Select,Hide,Show,Input
 } from '@chakra-ui/react';
 
 import { Link } from 'react-router-dom';
 import {AddIcon,Search2Icon} from '@chakra-ui/icons';
 import SearchBar from "../SearchBar/SearchBar"
 import Signin from "../Authentication/Sign-in.component"
+import { useState } from 'react';
 // import Banner from './Banner/Banner';
+
+
+
+
 export default function Navbar() {
    const { isOpen, onToggle,onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-
-  
+  const [query,setQuery] = useState("")
+ 
  
   
   return (
@@ -51,8 +56,8 @@ export default function Navbar() {
         </Flex>
         </Link>
 <Flex>
-<SearchBar width={"15rem"} SearchPlaceholder={"Location"} Search2Icon={  <Avatar size='sm' name='Kent Dodds' src='https://www.freeiconspng.com/thumbs/location-icon-png/location-icon-24.png' />}/>
-<SearchBar width={"28rem"} SearchPlaceholder={"Search here"} Search2Icon={<Search2Icon/>}/>
+<SearchBar onChange={(e)=>setQuery(e.target.value)} width={"15rem"} SearchPlaceholder={"Location"} Search2Icon={  <Avatar size='sm' name='Kent Dodds' src='https://www.freeiconspng.com/thumbs/location-icon-png/location-icon-24.png' />}/>
+<SearchBar onChange={(e)=>setQuery(e.target.value)} width={"28rem"} SearchPlaceholder={"Search here"} Search2Icon={<Search2Icon/>}/>
 </Flex>
         <Stack
           flex={{sm:1,  md: 1 }}
@@ -83,7 +88,8 @@ export default function Navbar() {
           box-shadow= "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
          borderColor= " blue yellow #00BFFF yellow"
          fontWeight={"bolder"}
-           leftIcon={<AddIcon />}>
+           leftIcon={<AddIcon />}
+           >
            {<Signin ModalName={"Sale"}/>}
           </Button></Hide>
         </HStack>

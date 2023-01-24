@@ -78,9 +78,9 @@ export default function PauseOnHover(){
         <Slider  style={{width:"95%",margin:"auto"  }}  {...settings}>
         {data.map((item) => (
       
-          <Card onClick={handleClick} margin="auto" boxShadow= {"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}}>
+          <Card onClick={handleClick} margin="auto" boxShadow= {"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}} key={item.id}>
        
-        <Box sx={{position:"absolute", marginLeft : "90%",color:"white",marginTop:"5px",marginRight:"10px"}}><FavoriteBorderOutlinedIcon  /></Box>
+        <Box sx={{position:"absolute", marginLeft : "90%",color:"white",marginTop:"5px",marginRight:"10px"}} key={item.id}><FavoriteBorderOutlinedIcon  /></Box>
         <Image
         height={150}
           

@@ -5,6 +5,9 @@ import Navbar from "./Components/Navbar/Navbar"
 import AllRouters from './Components/AllRoutes/AllRoutes';
 import { UserAuthContextProvider } from "./Components/Context/UserAuthContext"
 
+
+
+
 function App() {
 
  
@@ -15,6 +18,7 @@ function App() {
      <Navbar/>
     <AllRouters/>
     <Footer/>
+   
     </UserAuthContextProvider>
     </div>
   );
