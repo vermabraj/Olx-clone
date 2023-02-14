@@ -42,7 +42,7 @@ function ProductDetails() {
   },[]);
 
   const {image,price,title,location,post_uploaded} = productDetails;
-  console.log(productDetails)
+  // console.log(productDetails)
   return (
     <Container maxW={'7xl'}>
         <SimpleGrid
@@ -189,11 +189,11 @@ function ProductDetails() {
                
                 <CardBody >
                   <Text fontSize={"45px"} fontWeight={"bolder"} textAlign={"center"}>{price}</Text>
-                  <Button bg='#002f34' color="white" w="20rem" marginTop={"10px"}>Make Offer</Button><br/>
+                  <Button bg='#002f34' color="white" w="100%" marginTop={"10px"}>Make Offer</Button><br/>
                   <hr/>
                   <Heading size='sm' marginTop={"2rem"}> Available at  - {location}</Heading>
-                  <Button bg='#002f34' color="white"  w="20rem" marginTop={"10px"}>Book test drive</Button><br/>
-                  <Button colorScheme='teal'  variant='outline'w="20rem" marginTop={"10px"}>Contact with seller</Button><br/>
+                  <Button bg='#002f34' color="white"  w="100%" marginTop={"10px"}>Book test drive</Button><br/>
+                  <Button colorScheme='teal'  variant='outline' w="100%" marginTop={"10px"}>Contact with seller</Button><br/>
                 </CardBody>
                
               </Card>
