@@ -3,6 +3,9 @@ import {
   GET_POSTS_LOADING,
   GET_POSTS_RESET,
   GET_POSTS_SUCCESS,
+  GET_PRODUCT_FAILURE,
+  GET_PRODUCT_REQUEST,
+  GET_PRODUCT_SUCCESS,
 } from "./Product.types";
 
 let initState = {
@@ -28,15 +31,21 @@ export const postReducer = (state = initState, { payload, type }) => {
         error: true,
       };
     }
+    case GET_PRODUCT_REQUEST:
+      return { ...state, isLoading: true };
+    case GET_PRODUCT_SUCCESS:
+      return { ...state, isLoading: false, data: payload };
+    case GET_PRODUCT_FAILURE:
+      return { ...state, isLoading: false, isError: true };
+
     case GET_POSTS_SUCCESS: {
-     
       const categories = {};
       payload.forEach((product) => {
         if (categories[product.title] == undefined) {
           categories[product.title] = 1;
         } else categories[product.title]++;
       });
-     
+
       return {
         ...state,
         loading: false,
@@ -62,7 +71,7 @@ export const postReducer = (state = initState, { payload, type }) => {
       let newData = state.data.filter((product) => {
         return convertToNum(product.price) <= payload;
       });
-      
+
       return { ...state, data: [...newData] };
     }
     case "FILTER_BY_CATEGORY": {

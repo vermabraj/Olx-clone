@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { MoonIcon, SearchIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -14,20 +14,49 @@ import {
   Select,
   Hide,
   Show,
+  InputRightElement,
+  Input,
+  InputGroup,
 } from "@chakra-ui/react";
-
+   import { BsPerson } from "react-icons/bs";  
 import { Link } from "react-router-dom";
 import { AddIcon, Search2Icon } from "@chakra-ui/icons";
 import SearchBar from "../SearchBar/SearchBar";
 import Signin from "../Authentication/Sign-in.component";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import {useNavigate} from "react-router-dom"
+
 // import Banner from './Banner/Banner';
 export default function Navbar() {
   const { isAuth } = useSelector((state) => state.product);
   const { isOpen, onToggle, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const token = localStorage.getItem("user");
+  const [updated, setUpdated] = useState("");
+  const [message, setMessage] = useState("");
   const dispatch = useDispatch();
+   const [data, setData] = useState([]);
+   const navigate = useNavigate();
+
+let username = localStorage.getItem("username");
+
+
+
+const handleChange = (event) => {
+  setMessage(event.target.value);
+};
+
+const handleKeyDown = (event) => {
+  if (event.key === "Enter") {
+    setUpdated(message);
+    navigate(`/all_category?q=${message}`);
+    setMessage("");
+  }
+};
+
+
+
   return (
     <Box
       bg={useColorModeValue("gray.100", "gray.900")}
@@ -37,19 +66,16 @@ export default function Navbar() {
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
-        minH={"80px"}
-        py={{ base: 2 }}
-        px={{ base: 2 }}
         borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
-        align={"center"}
+        alignItems="center"
+        justifyContent={"space-between"}
+        p={4}
+        gap="50px"
       >
         <Link to="/">
-          <Flex
-            flex={{ base: 1, md: 1, lg: 1 }}
-            justify={{ base: "left", md: "start" }}
-          >
+          <Flex flex={{ base: 1, md: 1, lg: 1 }} justify="space-evenly">
             <Text
               textAlign={useBreakpointValue({ base: "center", md: "left" })}
               fontFamily={"heading"}
@@ -64,45 +90,49 @@ export default function Navbar() {
             </Text>
           </Flex>
         </Link>
-        <Flex>
-          <SearchBar
-            width={"15rem"}
-            SearchPlaceholder={"Location"}
-            Search2Icon={
-              <Avatar
-                size="sm"
-                name="Kent Dodds"
-                src="https://www.freeiconspng.com/thumbs/location-icon-png/location-icon-24.png"
-              />
-            }
-          />
-          <SearchBar
-            width={"28rem"}
-            SearchPlaceholder={"Search here"}
-            Search2Icon={<Search2Icon />}
-          />
-        </Flex>
-        <Stack
-          flex={{ sm: 1, md: 1 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
-          <Flex display={{ base: "flex", md: "flex" }} alignItems="center">
-            <Select
-              border="none"
-              size="sm"
-              display={{ base: "flex", md: "flex", lg: "flex" }}
+        <Flex justifyContent={"space-between"} gap="50px">
+          <Stack spacing={4}>
+            <InputGroup
+              width={["50px", "100px", "250px", "400px"]}
+              border={"1px solid silver"}
+              borderRadius={"7px"}
             >
-              <option value="english">English</option>
-              <option value="hindi">Hindi</option>
-            </Select>
+              <Input
+                type="text"
+                placeholder="Search for products, brands and more"
+                fontSize={"14px"}
+                border={"1px solid silver"}
+                id="message"
+                name="message"
+                value={message}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+              />
+              <InputRightElement
+                pointerEvents="none"
+                children={<SearchIcon color="gray.300" />}
+              />
+            </InputGroup>
+          </Stack>
+          <Hide below="md">
+            <Flex display={{ base: "flex", md: "flex" }} alignItems="center">
+              <Select border="none" size="sm">
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+              </Select>
+            </Flex>
+          </Hide>
+          <Flex justify={"center"} alignItems={"center"}>
+            <BsPerson size={"20px"} />
+            <span id="userCharLimit">{username}</span>
           </Flex>
-          <Flex>
-            <Button bg="none" onClick={toggleColorMode}>
-              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            </Button>
 
+          <Flex>
+            <Hide below="md">
+              <Button variant="none" onClick={toggleColorMode}>
+                {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              </Button>
+            </Hide>
             <small>
               {
                 <Signin
@@ -114,12 +144,11 @@ export default function Navbar() {
           </Flex>
 
           <HStack>
-            <Hide below="lg">
+            <Hide below="md">
               {" "}
               <Flex
                 alignItems={"center"}
-                padding="10px"
-                height="50%"
+                height="80%"
                 border="5px solid"
                 borderRadius="2rem"
                 border-style="solid"
@@ -132,7 +161,7 @@ export default function Navbar() {
               </Flex>
             </Hide>
           </HStack>
-        </Stack>
+        </Flex>
       </Flex>
     </Box>
   );

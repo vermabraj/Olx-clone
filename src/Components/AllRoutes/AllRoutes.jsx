@@ -8,6 +8,8 @@ import ProductBikes from "../../Pages/Products/ProductBikes";
 import ProductHouse from "../../Pages/Products/ProductHouse";
 import ProductMobiles from "../../Pages/Products/ProductMobiles";
 import AllProducts from "../../Pages/Products/AllProducts";
+import SearchProducts from "../../Pages/Products/SearchProducts";
+
 
 function AllRouters() {
   return (
@@ -23,6 +25,8 @@ function AllRouters() {
       <Route path="/Authentication" element={<Authentication />} />
       <Route path="/Signup" element={<SignUpForm />} />
       <Route path="/ProductDetails/:id" element={<ProductDetails />} />
+      <Route path="/all_category" element={<SearchProducts />}></Route>
+    
     </Routes>
   );
 }

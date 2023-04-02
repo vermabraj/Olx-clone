@@ -43,15 +43,15 @@ const Authentication = ({ ModalName }) => {
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
-    setProfile(user?.displayName);
-    toast("Login Successfully");
-    console.log("User");
+   
+     localStorage.setItem("username", user?.displayName);
+   
     dispatch({ type: "AUTH_SUCCESS" });
   };
 
   const [formField, setFormField] = useState(defaultFormFields);
   const { email, password } = formField;
-  const [profile, setProfile] = useState("");
+
   const navigate = useNavigate();
   const restFormFields = () => {
     setFormField(defaultFormFields);
@@ -65,6 +65,7 @@ const Authentication = ({ ModalName }) => {
         isClosable: true,
       });
   };
+ 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -87,9 +88,8 @@ const Authentication = ({ ModalName }) => {
 
   return (
     <div>
-      {profile}
-      {}
-      <Button  bg={"none"} onClick={onOpen}>
+     
+      <Button  variant={"none"} onClick={onOpen}>
         {ModalName}
       </Button>
       <Modal

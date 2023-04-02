@@ -41,7 +41,7 @@ const firebaseApp = initializeApp(firebaseConfig);
     const userDocRef = doc(db,'users',userAuth.uid);
    
     const userSnapShot = await  getDoc(userDocRef);
- console.log(userSnapShot)
+ 
     if(!userSnapShot.exists()){
       const {displayName,email} = userAuth;
       const createdAt = new Date();
