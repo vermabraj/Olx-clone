@@ -1,46 +1,34 @@
-## Project Name - Olx-Clone
+## Project Name - Quicksell (Olx-Clone)
 
-Digital Xpress is ECommerce Website & is a clone of Reliance Digital. It is used for buying the electrical products, Home Appliances & other kind of products. Digital Express Digital Stores are bigger in size than the other format Digital Xpress Mini Stores. It is one of the largest electronics retailers in India with over 5,000 products in its inventory.
+Quicksell website is for buy and sell goods and products & clone os OLX, which makes it so easy to connect people to buy, sell or exchange used goods and services. It's completely free, and it can be used from a laptop or mobile phone.
 
 ## Deployed Link
 
-Visit :https://reliance-digital-beryl.vercel.app/
+Visit :https://olx-clone-quicksell.netlify.app/
 
 ## Responsive for all screen sizes
 
 ## Tech Stack Used
 
-Digital Express webiste looks very amazing and introduced with various type of languages like JavaScript, HTML, CSS etc. There are the some important details regarding with this project which is mentioned below:
+Quicksell webiste looks very amazing and introduced with various type of languages like JavaScript, HTML, CSS etc. There are some important details regarding this project which is mentioned below:
 
 <ul dir="auto">
- <ol dir="auto">◉ JavaScript : 94.6%</ol>
- <ol dir="auto">◉ HTML : 0.5%</ol>
- <ol dir="auto">◉ CSS : 4.9%</ol>
+ <ol dir="auto">◉ JavaScript : 84.2%</ol>
+ <ol dir="auto">◉ HTML : 0.7%</ol>
+ <ol dir="auto">◉ CSS : 15.1%</ol>
  </ul>
  
  ## Functionalities
  
  <ul dir="auto">
  
- <ol dir="auto">1. Cart Functionality (like adding an item and removing) </ol>
- <ol dir="auto">2. Admin Page</ol>
- <ol dir="auto">3. Admin can add a product Will be shown on the latest page </ol>
- <ol dir="auto">4. Login and Sign Up </ol>
+ <ol dir="auto">1. Search Functionality (like search any item by name) </ol>
+ <ol dir="auto">2. Category Pages (You can getProduct by category as well )</ol>
+ <ol dir="auto">3. Filters (You can filter products by Ascending, Descending and by Brand as well) </ol>
+ <ol dir="auto">4. Login and Sign Up (by Firebase) </ol>
  </ul>
  
- ## Admin Account Details(Admin Email and Password)
  
- <p>you can add products by admin account and all the users can see the product on latest page(which contain all the latest items)</p>
- 
-  <ul dir="auto">
- 
- <ol dir="auto">Admin Email - eve.holt@reqres.in </ol>
- <ol dir="auto">Password - Citysilicka</ol>
- 
- </ul>
- 
- ![image](https://user-images.githubusercontent.com/97522154/214007653-2b25072e-ae3d-46c8-81b3-446c0407f1a2.png)
-
 This report is provided by the Github language used stats. So, this is the total percentage of the coding languages. Now we explain our project in details.
 
 ## Features & Specifications
