@@ -7,6 +7,7 @@ import {
   Stack,
   Collapse,
   Icon,
+  
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -28,7 +29,7 @@ import {
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
-} from "@chakra-ui/icons";
+} from '@chakra-ui/icons';
 import { MoonIcon, SearchIcon, SunIcon } from "@chakra-ui/icons";
 
 import { BsPerson } from "react-icons/bs";
@@ -42,29 +43,31 @@ import { useNavigate } from "react-router-dom";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  const { isAuth } = useSelector((state) => state.product);
+   const { isAuth } = useSelector((state) => state.product);
+  
+   const { colorMode, toggleColorMode } = useColorMode();
+   const token = localStorage.getItem("user");
+   const [updated, setUpdated] = useState("");
+   const [message, setMessage] = useState("");
+   const dispatch = useDispatch();
+   const [data, setData] = useState([]);
+   const navigate = useNavigate();
 
-  const { colorMode, toggleColorMode } = useColorMode();
-  const token = localStorage.getItem("user");
-  const [updated, setUpdated] = useState("");
-  const [message, setMessage] = useState("");
-  const dispatch = useDispatch();
-  const [data, setData] = useState([]);
-  const navigate = useNavigate();
+   let username = localStorage.getItem("username");
 
-  let username = localStorage.getItem("username");
+   const handleChange = (event) => {
+     setMessage(event.target.value);
+   };
 
-  const handleChange = (event) => {
-    setMessage(event.target.value);
-  };
+   const handleKeyDown = (event) => {
+     if (event.key === "Enter") {
+       setUpdated(message);
+       navigate(`/all_category?q=${message}`);
+       setMessage("");
+     }
+   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      setUpdated(message);
-      navigate(`/all_category?q=${message}`);
-      setMessage("");
-    }
-  };
+
 
   return (
     <Box>
@@ -147,13 +150,13 @@ export default function WithSubnavigation() {
         >
           <Hide below="md">
             <Flex display={{ base: "flex", md: "flex" }} alignItems="center">
-              <Select  size="sm">
+              <Select border="none" size="sm">
                 <option value="english">English</option>
                 <option value="hindi">Hindi</option>
               </Select>
             </Flex>
-          </Hide>
-          <Hide below="sm">
+</Hide>
+<Hide below="sm">
             <Flex justify={"center"} alignItems={"center"}>
               <BsPerson size={"20px"} />
               <span id="userCharLimit">{username}</span>
@@ -176,19 +179,21 @@ export default function WithSubnavigation() {
             </Flex>
           </Hide>
           <HStack>
-            <Flex
-              alignItems={"center"}
-              height="80%"
-              border="5px solid"
-              borderRadius="2rem"
-              border-style="solid"
-              box-shadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
-              borderColor=" blue yellow #00BFFF yellow"
-              fontWeight={"bolder"}
-              leftIcon={<AddIcon />}
-            >
-              {<Signin ModalName={"Sale"} />}
-            </Flex>
+           
+              <Flex
+                alignItems={"center"}
+                height="80%"
+                border="5px solid"
+                borderRadius="2rem"
+                border-style="solid"
+                box-shadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
+                borderColor=" blue yellow #00BFFF yellow"
+                fontWeight={"bolder"}
+                leftIcon={<AddIcon />}
+              >
+                {<Signin ModalName={"Sale"} />}
+              </Flex>
+           
           </HStack>
         </Stack>
       </Flex>
@@ -201,9 +206,9 @@ export default function WithSubnavigation() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const linkColor = useColorModeValue('gray.600', 'gray.200');
+  const linkHoverColor = useColorModeValue('gray.800', 'white');
+  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
     <Stack direction={"row"} spacing={4}>
@@ -243,13 +248,14 @@ const DesktopNav = () => {
   );
 };
 
+
+
 const MobileNav = () => {
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.800")}
+      bg={useColorModeValue('white', 'gray.800')}
       p={4}
-      display={{ md: "none" }}
-    >
+      display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -262,42 +268,40 @@ const MobileNavItem = ({ label, children, href }) => {
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
+    
       <Flex
         py={2}
         as={Link}
         href={href}
-        justify={"space-between"}
-        align={"center"}
+        justify={'space-between'}
+        align={'center'}
         _hover={{
-          textDecoration: "none",
-        }}
-      >
+          textDecoration: 'none',
+        }}>
         <Text
           fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
-        >
+          color={useColorModeValue('gray.600', 'gray.200')}>
           {label}
         </Text>
         {children && (
           <Icon
             as={ChevronDownIcon}
-            transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(180deg)" : ""}
+            transition={'all .25s ease-in-out'}
+            transform={isOpen ? 'rotate(180deg)' : ''}
             w={6}
             h={6}
           />
         )}
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
           mt={2}
           pl={4}
           borderLeft={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
-        >
+          borderStyle={'solid'}
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          align={'start'}>
           {children &&
             children.map((child) => (
               <Link key={child.label} py={2} href={child.href}>
@@ -309,6 +313,8 @@ const MobileNavItem = ({ label, children, href }) => {
     </Stack>
   );
 };
+
+
 
 const NAV_ITEMS = [
   {

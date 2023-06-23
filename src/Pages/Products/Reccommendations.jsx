@@ -24,7 +24,7 @@ import { BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const AllProducts = () => {
-  const { data } = useSelector((store) => store.product);
+  const { data, loading } = useSelector((store) => store.product);
 
   const dispatch = useDispatch();
   //console.log(data);
@@ -41,7 +41,15 @@ const AllProducts = () => {
   const sortByHL = () => {
     dispatch({ type: "SORT_HIGH_TO_LOW" });
   };
-
+if (loading)
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
+        alt="loader"
+      />
+    </div>
+  );
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -54,15 +62,18 @@ const AllProducts = () => {
               alignItems: "center",
               marginBottom: "5px",
               padding: "10px",
-              boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+              border: "1px solid silver",
             }}
           >
-            <div>
+            <div
+             
+            >
               <h1
                 style={{
-                  fontSize: "20px",
+                  fontSize: "25px",
                   fontWeight: "bold",
                   fontFamily: "sans-serif",
+                  
                 }}
               >
                 Fresh Reccommendation
@@ -89,15 +100,17 @@ const AllProducts = () => {
                         position: "absolute",
                         marginLeft: "88%",
                         color: "grey",
+
                         marginTop: "5px",
                       }}
+                      _hover={{ color: "red" }}
                     >
                       <FavoriteBorderOutlinedIcon />
                     </Box>
                     <Image
                       height={170}
                       margin={"auto"}
-                      src={item.image}
+                      src={item.image1}
                       alt={item.title}
                     />
                     <CardHeader>

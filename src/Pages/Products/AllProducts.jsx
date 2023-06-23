@@ -16,6 +16,7 @@ import {
   Image,
   CardHeader,
   Flex,
+  background,
 } from "@chakra-ui/react";
 import Filters from "./Filters/Filters";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
@@ -24,8 +25,7 @@ import { BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const AllProducts = () => {
-  const { data } = useSelector((store) => store.product);
-
+  const { loading,data } = useSelector((store) => store.product);
   const dispatch = useDispatch();
   //console.log(data);
   useEffect(() => {
@@ -41,7 +41,15 @@ const AllProducts = () => {
   const sortByHL = () => {
     dispatch({ type: "SORT_HIGH_TO_LOW" });
   };
-
+if (loading)
+  return (
+    <div style={{display:"flex",justifyContent:"center"}}>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
+        alt="loader"
+      />
+    </div>
+  );
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -106,13 +114,14 @@ const AllProducts = () => {
 
                         marginTop: "5px",
                       }}
+                      _hover={{ color: "red" }}
                     >
                       <FavoriteBorderOutlinedIcon />
                     </Box>
                     <Image
                       height={170}
                       margin={"auto"}
-                      src={item.image}
+                      src={item.image1}
                       alt={item.title}
                     />
                     <CardHeader>

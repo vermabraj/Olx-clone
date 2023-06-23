@@ -25,7 +25,7 @@ import { BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const ProductHouse = () => {
-  const { data } = useSelector((store) => store.product);
+  const { data, loading } = useSelector((store) => store.product);
 
   const dispatch = useDispatch();
   
@@ -42,7 +42,15 @@ const ProductHouse = () => {
   const sortByHL = () => {
     dispatch({ type: "SORT_HIGH_TO_LOW" });
   };
-
+if (loading)
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
+        alt="loader"
+      />
+    </div>
+  );
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -104,15 +112,17 @@ const ProductHouse = () => {
                         position: "absolute",
                         marginLeft: "88%",
                         color: "grey",
+
                         marginTop: "5px",
                       }}
+                      _hover={{ color: "red" }}
                     >
                       <FavoriteBorderOutlinedIcon />
                     </Box>
                     <Image
                       height={170}
                       margin={"auto"}
-                      src={item.image ?  item.image  : item.img_jpg}
+                      src={item.image1 ? item.image1 : item.imgageSrc}
                       alt={item.title}
                     />
                     <CardHeader>

@@ -33,14 +33,14 @@ function ProductDetails() {
 
   const { data } = useSelector((state) => state.product);
   const productDetails = data[id];
-  const { image, price, title, location, post_uploaded, _1IpS4 } =
+  const { image1, price, title, location, post_uploaded, _1IpS4 } =
     productDetails;
 console.log(data)
   return (
     <Container maxW={"7xl"} margin={"auto"}>
       <Flex className="viewParentDiv" direction={["column", "column", "row"]}>
         <Box className="imageShowDiv">
-          <img src={image} alt="images" />
+          <img src={image1} alt="images" />
         </Box>
         <Box className="rightSection">
           <div className="productDetails">

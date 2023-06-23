@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 // import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-
+import { useSelector, useDispatch } from "react-redux";
+import { store } from "../Redux/store";
 import {getBikes} from "../Api/SlidingCardsApi"
+import { getPostsAllCategory } from "../Redux/Products/Product.action";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -32,6 +34,15 @@ function SamplePrevArrow(props) {
 
 export default function PauseOnHover(){
   
+   const { loading, data } = useSelector((store) => store.product);
+   const dispatch = useDispatch();
+   //console.log(data);
+   useEffect(() => {
+     setTimeout(() => {
+       dispatch(getPostsAllCategory());
+     }, 2000);
+   }, []);
+
     const settings = {
       accessibility:true,
       adaptiveHeight:false,
@@ -49,43 +60,40 @@ export default function PauseOnHover(){
     };
 
     const navigate = useNavigate()
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalCount, setTotalCount] = useState(0);
+  
 
-  const handleGetCities = (page) => {
-    getBikes({ page: page, limit: 10, sort: "name", order: "desc" })
-      .then((res) => {
-        setData(res.data);
-        setTotalCount(Number(res.headers["x-total-count"]));
-      })
-      .catch((err) => console.log(err));
-  };
+ 
 
-  useEffect(() => {
-    handleGetCities(page);
-  }, [page]);
+ 
 
   const handleClick=()=>{
    
     navigate("/")
   }
-
+if (loading)
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
+        alt="loader"
+      />
+    </div>
+  );
     return (
       <Hide below="lg">
-      <div style={{margin:"auto",marginBottom:"40px",marginTop:"-60px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",borderRadius:"20px"}} >
+      <div style={{margin:"auto",marginBottom:"40px",marginTop:"-60px",border:"1px solid silver"}} >
         <h2 style={{fontSize:"25px",fontWeight:"bolder",marginLeft:"30px",marginBottom:"10px",textDecoration:"underline"}} >More on Cars</h2>
         <Slider  style={{width:"95%",margin:"auto"  }}  {...settings}>
         {data.map((item,i) => (
       
-          <Card onClick={handleClick} margin="auto" boxShadow= {"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}} key={i} id="productBody">
+          <Card onClick={handleClick} margin="20px" minH='20rem' maxW={{base:null,md:"15rem",lg:"18rem"}} key={i} id="productBody">
        
-        <Box sx={{position:"absolute", marginLeft : "88%",color:"grey",marginTop:"5px",marginRight:"10px"}}><FavoriteBorderOutlinedIcon  /></Box>
+        <Box sx={{position:"absolute", marginLeft : "88%",color:"grey",marginTop:"5px",marginRight:"10px"}}></Box>
         <Image
         height={150}
           
           margin={"auto"}
-          src={item.image}
+          src={item.image1}
           alt={item.title}
         />
         <CardHeader>

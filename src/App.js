@@ -12,7 +12,7 @@ function App() {
       <UserAuthContextProvider>
         <Navbar />
         <Banner />
-        
+
         <AllRouters />
         <Footer />
       </UserAuthContextProvider>

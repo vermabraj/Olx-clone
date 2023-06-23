@@ -99,6 +99,7 @@ const SearchProducts = () => {
 
                         marginTop: "5px",
                       }}
+                      _hover={{ color: "red" }}
                     >
                       <FavoriteBorderOutlinedIcon />
                     </Box>
