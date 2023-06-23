@@ -13,7 +13,7 @@ Visit :https://olx-clone-quicksell.netlify.app/
 Quicksell webiste looks very amazing and introduced with various type of languages like JavaScript, HTML, CSS etc. There are some important details regarding this project which is mentioned below:
 
 <ul dir="auto">
- <ol dir="auto">◉ JavaScript : 84.2%</ol>
+ <ol dir="auto">◉ JavaScript : 85.8%</ol>
  <ol dir="auto">◉ HTML : 0.7%</ol>
  <ol dir="auto">◉ CSS : 15.1%</ol>
  </ul>
