@@ -28,11 +28,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
-const defaultFormFields = {
-  email: "",
-  password: "",
-};
+import Login from "./Login";
 
 const Authentication = ({ ModalName }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,53 +39,15 @@ const Authentication = ({ ModalName }) => {
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
-   
-     localStorage.setItem("username", user?.displayName);
-   
+console.log(user)
+    localStorage.setItem("username", user?.displayName);
+localStorage.setItem("token", user?.accessToken);
     dispatch({ type: "AUTH_SUCCESS" });
-  };
-
-  const [formField, setFormField] = useState(defaultFormFields);
-  const { email, password } = formField;
-
-  const navigate = useNavigate();
-  const restFormFields = () => {
-    setFormField(defaultFormFields);
-    navigate("/");
-    toast("Login Successfully");
-      toast({
-        title: "Account created.",
-        description: "We've created your account for you.",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      });
-  };
- 
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormField({ ...formField, [name]: value });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      restFormFields();
-    } catch (error) {
-      toast("there is some error in login");
-    }
   };
 
   return (
     <div>
-     
-      <Button  variant={"none"} onClick={onOpen}>
+      <Button variant={"none"} onClick={onOpen}>
         {ModalName}
       </Button>
       <Modal
@@ -111,39 +69,7 @@ const Authentication = ({ ModalName }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <Form onSubmit={handleSubmit}>
-              <FormControl>
-                <FormLabel>Email</FormLabel>
-                <Input
-                  onChange={handleChange}
-                  name="email"
-                  type="email"
-                  value={email}
-                  ref={initialRef}
-                  placeholder="Enter your email"
-                />
-              </FormControl>
-              <FormControl mt={4}>
-                <FormLabel>Password</FormLabel>
-                <Input
-                  onChange={handleChange}
-                  name="password"
-                  type="password"
-                  value={password}
-                  placeholder="Enter your password"
-                />
-              </FormControl>
-
-              <Button
-                type="submit"
-                onClick={onClose}
-                colorScheme="blue"
-                marginTop={"1rem"}
-                w={"full"}
-              >
-                Signin
-              </Button>
-            </Form>
+            <Login />
 
             <div
               style={{

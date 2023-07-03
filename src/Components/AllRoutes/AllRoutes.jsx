@@ -10,11 +10,15 @@ import ProductMobiles from "../../Pages/Products/ProductMobiles";
 import AllProducts from "../../Pages/Products/AllProducts";
 import SearchProducts from "../../Pages/Products/SearchProducts";
 
+import AddProducts from "../../Pages/Products/AddProducts";
+import Login from "../Authentication/Login";
 
 function AllRouters() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+
+      <Route path="/addproducts" element={<AddProducts />}></Route>
       <Route path="/cars" element={<ProductCars />} />
       <Route path="/commercial_vehicle" element={<ProductCars />} />
       <Route path="/motorcycle" element={<ProductBikes />} />
@@ -24,9 +28,9 @@ function AllRouters() {
       <Route path="/allProducts" element={<AllProducts />} />
       <Route path="/Authentication" element={<Authentication />} />
       <Route path="/Signup" element={<SignUpForm />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/ProductDetails/:id" element={<ProductDetails />} />
       <Route path="/all_category" element={<SearchProducts />}></Route>
-    
     </Routes>
   );
 }

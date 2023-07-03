@@ -7,18 +7,13 @@ import {
   Stack,
   Collapse,
   Icon,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
   Avatar,
   useColorMode,
   HStack,
-  Select,
   Hide,
-  Show,
   InputRightElement,
   Input,
   InputGroup,
@@ -34,7 +29,7 @@ import { MoonIcon, SearchIcon, SunIcon } from "@chakra-ui/icons";
 import { BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { AddIcon, Search2Icon } from "@chakra-ui/icons";
-import SearchBar from "../SearchBar/SearchBar";
+
 import Signin from "../Authentication/Sign-in.component";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -45,7 +40,7 @@ export default function WithSubnavigation() {
   const { isAuth } = useSelector((state) => state.product);
 
   const { colorMode, toggleColorMode } = useColorMode();
-  const token = localStorage.getItem("user");
+
   const [updated, setUpdated] = useState("");
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
@@ -53,6 +48,7 @@ export default function WithSubnavigation() {
   const navigate = useNavigate();
 
   let username = localStorage.getItem("username");
+  let token = localStorage.getItem("token");
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -65,7 +61,7 @@ export default function WithSubnavigation() {
       setMessage("");
     }
   };
-
+  
   return (
     <Box>
       <Flex
@@ -145,16 +141,8 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
-          <Hide below="md">
-            <Flex display={{ base: "flex", md: "flex" }} alignItems="center">
-              <Select  size="sm">
-                <option value="english">English</option>
-                <option value="hindi">Hindi</option>
-              </Select>
-            </Flex>
-          </Hide>
           <Hide below="sm">
-            <Flex justify={"center"} alignItems={"center"}>
+            <Flex justify={"center"} alignItems={"center"} margin={3}>
               <BsPerson size={"20px"} />
               <span id="userCharLimit">{username}</span>
             </Flex>
@@ -176,19 +164,37 @@ export default function WithSubnavigation() {
             </Flex>
           </Hide>
           <HStack>
-            <Flex
-              alignItems={"center"}
-              height="80%"
-              border="5px solid"
-              borderRadius="2rem"
-              border-style="solid"
-              box-shadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
-              borderColor=" blue yellow #00BFFF yellow"
-              fontWeight={"bolder"}
-              leftIcon={<AddIcon />}
-            >
-              {<Signin ModalName={"Sale"} />}
-            </Flex>
+            {token ? (
+              <Link to={"/addproducts"}>
+                <Flex
+                  alignItems={"center"}
+                  height="80%"
+                  border="5px solid"
+                  borderRadius="2rem"
+                  border-style="solid"
+                  box-shadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
+                  borderColor=" blue yellow #00BFFF yellow"
+                  fontWeight={"bolder"}
+                  leftIcon={<AddIcon />}
+                >
+                  <Button variant={"none"}>Sale</Button>
+                </Flex>
+              </Link>
+            ) : (
+              <Flex
+                alignItems={"center"}
+                height="80%"
+                border="5px solid"
+                borderRadius="2rem"
+                border-style="solid"
+                box-shadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
+                borderColor=" blue yellow #00BFFF yellow"
+                fontWeight={"bolder"}
+                leftIcon={<AddIcon />}
+              >
+                {<Signin ModalName={"Sale"} />}
+              </Flex>
+            )}
           </HStack>
         </Stack>
       </Flex>
@@ -332,12 +338,12 @@ const NAV_ITEMS = [
       {
         label: "Commercial vehicle",
         subLabel: "All commercial vehicle",
-        href: "#",
+        href: "/commercial_vehicle",
       },
       {
         label: "Private Vehicle",
         subLabel: "All rental vehicles",
-        href: "#",
+        href: "/commercial_vehicle",
       },
     ],
   },
@@ -347,18 +353,18 @@ const NAV_ITEMS = [
   },
   {
     label: "Scooter",
-    href: "#",
+    href: "/scooter",
   },
   {
     label: "Mobile phones",
-    href: "#",
+    href: "/mobiles",
   },
   {
     label: "House and apartment",
-    href: "#",
+    href: "/house",
   },
   {
     label: "Rental house and apartment",
-    href: "#",
+    href: "/house",
   },
 ];

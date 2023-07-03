@@ -5,10 +5,9 @@ import AllRouters from "./Components/AllRoutes/AllRoutes";
 import { UserAuthContextProvider } from "./Components/Context/UserAuthContext";
 import Banner from "./Components/Navbar/Banner/Banner";
 
-
 function App() {
   return (
-    <div className="App">
+    <div>
       <UserAuthContextProvider>
         <Navbar />
         <Banner />

@@ -18,12 +18,19 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import Filters from "./Filters/Filters";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { AddIcon, ArrowDownIcon, MinusIcon } from "@chakra-ui/icons";
 import { BsHeart } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Button, Stack } from "react-bootstrap";
 
 const AllProducts = () => {
+   const [items, setItems] = useState([]);
+   const [visible, setVisible] = useState(8);
+   const showMore = () => {
+     setVisible((previewValue) => previewValue + 4);
+   };
   const { data, loading } = useSelector((store) => store.product);
 
   const dispatch = useDispatch();
@@ -41,15 +48,7 @@ const AllProducts = () => {
   const sortByHL = () => {
     dispatch({ type: "SORT_HIGH_TO_LOW" });
   };
-if (loading)
-  return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
-        alt="loader"
-      />
-    </div>
-  );
+
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -65,15 +64,12 @@ if (loading)
               border: "1px solid silver",
             }}
           >
-            <div
-             
-            >
+            <div>
               <h1
                 style={{
                   fontSize: "25px",
                   fontWeight: "bold",
                   fontFamily: "sans-serif",
-                  
                 }}
               >
                 Fresh Reccommendation
@@ -91,7 +87,7 @@ if (loading)
           </div>
 
           <div id="productCards">
-            {data.map((item, index) => {
+            {data.slice(0, visible).map((item, index) => {
               return (
                 <Link to={`/ProductDetails/${index}`}>
                   <Card id="productBody" key={index}>
@@ -133,13 +129,22 @@ if (loading)
                       }}
                     >
                       <Text>{item.location}</Text>
-                      <Text>{item.post_uploaded}</Text>
+                      <Text flexWrap="wrap">{item.post_uploaded}</Text>
                     </CardFooter>
                   </Card>
                 </Link>
               );
             })}
           </div>
+          <Flex  spacing={4} justify={"center"}>
+            
+            <button
+           style={{background:'silver',fontSize:"xxl", fontWeight:"bold",borderRadius:"10px",padding:"0px 10px 0px 10px"}}
+              onClick={showMore}
+            >
+             Show More
+            </button>
+          </Flex>
         </div>
       </div>
     </>

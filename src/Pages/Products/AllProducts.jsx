@@ -115,6 +115,7 @@ if (loading)
                         marginTop: "5px",
                       }}
                       _hover={{ color: "red" }}
+                     
                     >
                       <FavoriteBorderOutlinedIcon />
                     </Box>

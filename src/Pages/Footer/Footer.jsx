@@ -69,7 +69,7 @@ import "./FooterStyle.css";
       </div>
       <div className="footersFooter">
       <small>Other Countries Russia - South Africa - Nepal</small>
-      <small>All rights reserved © 2006-2022 QuickSale</small>
+      <small>All rights reserved © 2006-2023 QuickSale</small>
       </div>
     </div>
   );
